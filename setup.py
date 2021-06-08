@@ -1,18 +1,21 @@
 from distutils.core import setup
 setup(
-  name = 'DiamondGAN',         # How you named your package folder (MyLib)
-  packages = ['DiamondGAN'],   # Chose the same as "name"
-  version = '0.1',      # Start with a small number and increase it with every change you make
-  license='MIT',        # Chose a license from here: https://help.github.com/articles/licensing-a-repository
-  description = 'DiamondGAN: GAN used for multimodal translation in medical imaging from MRI T1, T2 to MRI FLAIR, DIR',   # Give a short description about your library
-  author = 'Cao Dongliang',                   # Type in your name
-  author_email = 'cao.dongliang97@gmail.com',      # Type in your E-Mail
-  url = 'https://https://github.com/dongliangcao',   # Provide either the link to your github or to your website
-  download_url = 'https://github.com/user/reponame/archive/v_01.tar.gz',    # I explain this later on
-  keywords = ['CycleGAN', 'multimodal translation', 'MRI'],   # Keywords that define your package best
-  install_requires=[            # I get to this in a second
-          'validators',
-          'beautifulsoup4',
+  name = 'DiamondGAN',        
+  packages = ['DiamondGAN'],  
+  version = '0.1',      
+  license='MIT',        
+  description = 'DiamondGAN: GAN used for multimodal translation in medical imaging from MRI T1, T2 to MRI FLAIR, DIR',  
+  author = 'Cao Dongliang',                  
+  author_email = 'cao.dongliang97@gmail.com',   
+  url = 'https://https://github.com/dongliangcao',   
+  download_url = 'https://github.com/dongliangcao/diamondGAN/archive/refs/tags/v0.1-alpha.tar.gz',    
+  keywords = ['CycleGAN', 'multimodal translation', 'MRI'],   
+  install_requires=[          
+          'numpy',
+          'tensorflow',
+          'tensorflow_addons',
+          'keras',
+          'SimpleITK'
       ],
   classifiers=[
     'Development Status :: 3 - Alpha',      # Chose either "3 - Alpha", "4 - Beta" or "5 - Production/Stable" as the current state of your package
