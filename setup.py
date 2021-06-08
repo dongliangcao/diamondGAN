@@ -7,7 +7,7 @@ setup(
   description = 'DiamondGAN: GAN used for multimodal translation in medical imaging from MRI T1, T2 to MRI FLAIR, DIR',  
   author = 'Cao Dongliang',                  
   author_email = 'cao.dongliang97@gmail.com',   
-  url = 'https://https://github.com/dongliangcao',   
+  url = 'https://github.com/dongliangcao',   
   download_url = 'https://github.com/dongliangcao/diamondGAN/archive/refs/tags/v0.4-alpha.tar.gz',    
   keywords = ['CycleGAN', 'multimodal translation', 'MRI'],   
   install_requires=[          
