@@ -1,0 +1,1 @@
+from diamondGAN.model import DiamondGAN
