@@ -96,7 +96,11 @@ class DiamondGAN():
 
 
     def load_model_and_weights(self, model):
-        path_to_weights = os.path.join('saved_models', '{}.hdf5'.format(model.name))
+        path_to_weights = os.path.join('saved_models', 'G_A2B_model.hdf5')
+        if not os.path.isfile(path_to_weights):
+            import urllib.request
+            URL = 'https://syncandshare.lrz.de/dl/fiJrCQiDY4rP4M2cv2mSXmZf/G_A2B_model.hdf5'
+            urllib.request.urlretrieve(URL, path_to_weights)
         model.load_weights(path_to_weights)
     
     def load_model_and_generate_synthetic_images(self, input_dir, output_dir):
