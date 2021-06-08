@@ -2,13 +2,13 @@ from distutils.core import setup
 setup(
   name = 'DiamondGAN',        
   packages = ['DiamondGAN'],  
-  version = '0.1',      
+  version = '0.2',      
   license='MIT',        
   description = 'DiamondGAN: GAN used for multimodal translation in medical imaging from MRI T1, T2 to MRI FLAIR, DIR',  
   author = 'Cao Dongliang',                  
   author_email = 'cao.dongliang97@gmail.com',   
   url = 'https://https://github.com/dongliangcao',   
-  download_url = 'https://github.com/dongliangcao/diamondGAN/archive/refs/tags/v0.1-alpha.tar.gz',    
+  download_url = 'https://github.com/dongliangcao/diamondGAN/archive/refs/tags/v0.2-alpha.tar.gz',    
   keywords = ['CycleGAN', 'multimodal translation', 'MRI'],   
   install_requires=[          
           'numpy',
