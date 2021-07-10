@@ -85,12 +85,16 @@ class DiamondGAN():
 
 
     def load_model_and_weights(self, model):
-        path_to_weights = 'G_A2B_model.hdf5'
-        if not os.path.isfile(path_to_weights):
-            import urllib.request
-            URL = 'https://syncandshare.lrz.de/dl/fiJrCQiDY4rP4M2cv2mSXmZf/G_A2B_model.hdf5'
-            urllib.request.urlretrieve(URL, path_to_weights)
-        model.load_weights(path_to_weights)
+        try:
+            path_to_weights = 'G_A2B_model.hdf5'
+            if not os.path.isfile(path_to_weights):
+                import urllib.request
+                URL = 'https://syncandshare.lrz.de/getlink/fiJrCQiDY4rP4M2cv2mSXmZf/G_A2B_model.hdf5'
+                urllib.request.urlretrieve(URL, path_to_weights)
+            model.load_weights(path_to_weights)
+        except:
+            print('Automatically download pre-trained model failed')
+            print('Please download model under the link https://drive.google.com/file/d/1BkBc-_yTabEOf1_HJxNjccV9kdg5Dgu5/view manually')
     
     def load_model_and_generate_synthetic_images(self, input_dir, output_dir):
 
