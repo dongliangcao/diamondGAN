@@ -10,11 +10,12 @@ import SimpleITK as sitk
 from warnings import filterwarnings
 filterwarnings('ignore')
 
-class DiamondGAN():
-    def __init__(self, image_shape=(200, 200, 2), input_dir='', output_dir=''):
-        self.img_shape = image_shape
+class Generator():
+    def __init__(self, input_dir='', output_dir='', model_path=''):
+        self.img_shape = (200, 200, 2)
         self.channels = self.img_shape[-1]
         self.normalization = tfa.layers.InstanceNormalization
+        self.model_path = model_path
 
         # Generator
         self.G_A2B = self.modelGenerator(name='G_A2B_model')
@@ -84,19 +85,11 @@ class DiamondGAN():
         return KM.Model(inputs=[input_img, mask], outputs=[x, x_atten], name=name)
 
 
-    def load_model_and_weights(self, model):
-        try:
-            path_to_weights = os.path.join(sys.prefix, 'G_A2B_model.hdf5')
-            if not os.path.isfile(path_to_weights):
-                print('Try download pre-trained model')
-                import urllib.request
-                URL = 'https://syncandshare.lrz.de/getlink/fiJrCQiDY4rP4M2cv2mSXmZf/G_A2B_model.hdf5'
-                urllib.request.urlretrieve(URL, path_to_weights)
-            model.load_weights(path_to_weights)
-        except:
-            print('Automatically download pre-trained model failed')
+    def load_model_and_weights(self, model, path_to_weights):
+        if not os.path.isfile(path_to_weights):
             print('Please download model under the link https://drive.google.com/file/d/1BkBc-_yTabEOf1_HJxNjccV9kdg5Dgu5/view manually')
             exit()
+        model.load_weights(path_to_weights)          
     
     def load_model_and_generate_synthetic_images(self, input_dir, output_dir):
 
@@ -118,7 +111,7 @@ class DiamondGAN():
             return array_1
         
         # load pre-trained generator
-        self.load_model_and_weights(self.G_A2B)
+        self.load_model_and_weights(self.G_A2B, self.model_path)
 
         dirs = os.listdir(input_dir)
         dirs.sort()
@@ -189,5 +182,6 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument("-i", "--input_dir", help="input path to the test set", default="../test_samples")
     parser.add_argument("-o", "--output_dir", help="output path of the predicted results", default="../test_samples")
+    parser.add_argument("-m", "--model_path", help="pre-trained model path", default="G_A2B_model.hdf5")
     args = parser.parse_args()
-    GAN = DiamondGAN(input_dir=args.input_dir, output_dir=args.input_dir)
+    GAN = Generator(input_dir=args.input_dir, output_dir=args.input_dir, model_path=args.model_path)
