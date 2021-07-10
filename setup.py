@@ -5,7 +5,7 @@ with open("README.txt", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
   name = 'DiamondGAN',         
-  version = '1.6',      
+  version = '2.0',      
   license='MIT',        
   description = 'DiamondGAN: GAN used for multimodal translation in medical imaging from MRI T1, T2 to MRI FLAIR, DIR',  
   long_description=long_description,
@@ -13,7 +13,7 @@ setuptools.setup(
   author = 'Cao Dongliang',                  
   author_email = 'cao.dongliang97@gmail.com',   
   url = 'https://github.com/dongliangcao/diamondGAN/',   
-  download_url = 'https://github.com/dongliangcao/diamondGAN/archive/refs/tags/v1.6.tar.gz',    
+  download_url = 'https://github.com/dongliangcao/diamondGAN/archive/refs/tags/v2.0.tar.gz',    
   keywords = ['CycleGAN', 'multimodal translation', 'MRI'],   
   install_requires=[          
           'numpy',
@@ -24,7 +24,6 @@ setuptools.setup(
       ],
   package_dir={"": "DiamondGAN"},
   packages=setuptools.find_packages(where="DiamondGAN"),
-  data_files=[('model', ['G_A2B_model.hdf5'])],
   classifiers=[
     'Development Status :: 3 - Alpha',      # Chose either "3 - Alpha", "4 - Beta" or "5 - Production/Stable" as the current state of your package
     'Intended Audience :: Developers',      # Define that your audience are developers
