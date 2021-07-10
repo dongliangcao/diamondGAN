@@ -1,10 +1,15 @@
-from distutils.core import setup
-setup(
-  name = 'DiamondGAN',        
-  packages = ['DiamondGAN'],  
+import setuptools
+
+with open("README.md", "r", encoding="utf-8") as fh:
+    long_description = fh.read()
+
+setuptools.setup(
+  name = 'DiamondGAN',         
   version = '1.1',      
   license='MIT',        
   description = 'DiamondGAN: GAN used for multimodal translation in medical imaging from MRI T1, T2 to MRI FLAIR, DIR',  
+  long_description=long_description,
+  long_description_content_type="text/markdown",
   author = 'Cao Dongliang',                  
   author_email = 'cao.dongliang97@gmail.com',   
   url = 'https://github.com/dongliangcao/diamondGAN/',   
@@ -17,6 +22,8 @@ setup(
           'keras',
           'SimpleITK'
       ],
+  package_dir={"": "DiamondGAN"},
+  packages=setuptools.find_packages(where="DiamondGAN"),
   classifiers=[
     'Development Status :: 3 - Alpha',      # Chose either "3 - Alpha", "4 - Beta" or "5 - Production/Stable" as the current state of your package
     'Intended Audience :: Developers',      # Define that your audience are developers

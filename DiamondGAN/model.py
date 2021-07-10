@@ -1,12 +1,14 @@
 import os
 import argparse
 import numpy as np
-import sys
 import tensorflow as tf
 import tensorflow.keras.layers as KL
 import tensorflow.keras.models as KM
 import tensorflow_addons as tfa
 import SimpleITK as sitk
+
+from warnings import filterwarnings
+filterwarnings('ignore')
 
 class DiamondGAN():
     def __init__(self, image_shape=(200, 200, 2), input_dir='', output_dir=''):
@@ -16,19 +18,8 @@ class DiamondGAN():
 
         # Generator
         self.G_A2B = self.modelGenerator(name='G_A2B_model')
-        # ======= Avoid pre-allocating GPU memory ==========
-        # TensorFlow wizardry
-        config = tf.compat.v1.ConfigProto()
-
-        # Don't pre-allocate memory; allocate as-needed
-        config.gpu_options.allow_growth = True
-
-        # Create a session with the above options specified.
-        tf.compat.v1.keras.backend.set_session(tf.compat.v1.Session(config=config))
 
         # ======= Initialize training ==========
-        sys.stdout.flush()
-        print('=========Start Generation==========')
         self.load_model_and_generate_synthetic_images(input_dir, output_dir)
 
 #===============================================================================
@@ -126,7 +117,7 @@ class DiamondGAN():
         dirs = os.listdir(input_dir)
         dirs.sort()
         for dir_name in dirs:
-            print(f'Parsing data from {dir_name}')
+            print(f'Parsing data from dir: {dir_name}')
             if not os.path.exists(output_dir+'/'+dir_name):
                 os.mkdir(output_dir+'/'+dir_name)
             brain_img = sitk.ReadImage(os.path.join(input_dir, dir_name, 't1_bet_mask.nii.gz'))
@@ -189,9 +180,6 @@ class ReflectionPadding2D(KL.Layer):
         return config
 
 if __name__ == '__main__':
-    os.environ["CUDA_VISIBLE_DEVICES"]="0"
-    os.environ['TF_CPP_MIN_LOG_LEVEL'] = '1'
-    
     parser = argparse.ArgumentParser()
     parser.add_argument("-i", "--input_dir", help="input path to the test set", default="../test_samples")
     parser.add_argument("-o", "--output_dir", help="output path of the predicted results", default="../test_samples")
