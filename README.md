@@ -6,7 +6,11 @@ The pre-trained generator is provided, which is trained to translate the MRI bra
 
 ## Requirement
 numpy
+
 tensorflow
+
+tensorflow_addons
+
 SimpleITK
 
 ## Usage

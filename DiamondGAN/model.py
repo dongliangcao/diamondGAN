@@ -1,4 +1,4 @@
-import os
+import os, sys
 import argparse
 import numpy as np
 import tensorflow as tf
@@ -86,8 +86,9 @@ class DiamondGAN():
 
     def load_model_and_weights(self, model):
         try:
-            path_to_weights = 'G_A2B_model.hdf5'
+            path_to_weights = os.path.join(sys.prefix, 'G_A2B_model.hdf5')
             if not os.path.isfile(path_to_weights):
+                print('Try download pre-trained model')
                 import urllib.request
                 URL = 'https://syncandshare.lrz.de/getlink/fiJrCQiDY4rP4M2cv2mSXmZf/G_A2B_model.hdf5'
                 urllib.request.urlretrieve(URL, path_to_weights)
