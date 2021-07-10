@@ -5,7 +5,7 @@ with open("README.txt", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
   name = 'DiamondGAN',         
-  version = '1.0',      
+  version = '0.0',      
   license='MIT',        
   description = 'DiamondGAN: GAN used for multimodal translation in medical imaging from MRI T1, T2 to MRI FLAIR, DIR',  
   long_description=long_description,

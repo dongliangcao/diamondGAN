@@ -25,4 +25,4 @@ from DiamondGAN.model import Generator
 Generator(input_dir=INPUT_DIR, output_dir=OUTPUT_DIR, model_path=MODEL_PATH)
 
 ## Notice
-If you download the repository through **PyPI**, you may need to download the pre-trained model under the [link](https://drive.google.com/file/d/1BkBc-_yTabEOf1_HJxNjccV9kdg5Dgu5/view) and put it under the **sys.prefix** 
+If you download the repository through **PyPI**, you may need to download the pre-trained model under the [link](https://drive.google.com/file/d/1BkBc-_yTabEOf1_HJxNjccV9kdg5Dgu5/view)
