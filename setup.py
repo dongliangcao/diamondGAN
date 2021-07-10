@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
   name = 'DiamondGAN',         
-  version = '1.1',      
+  version = '1.2',      
   license='MIT',        
   description = 'DiamondGAN: GAN used for multimodal translation in medical imaging from MRI T1, T2 to MRI FLAIR, DIR',  
   long_description=long_description,
@@ -13,7 +13,7 @@ setuptools.setup(
   author = 'Cao Dongliang',                  
   author_email = 'cao.dongliang97@gmail.com',   
   url = 'https://github.com/dongliangcao/diamondGAN/',   
-  download_url = 'https://github.com/dongliangcao/diamondGAN/archive/refs/tags/v1.1.tar.gz',    
+  download_url = 'https://github.com/dongliangcao/diamondGAN/archive/refs/tags/v1.2.tar.gz',    
   keywords = ['CycleGAN', 'multimodal translation', 'MRI'],   
   install_requires=[          
           'numpy',
