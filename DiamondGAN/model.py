@@ -95,6 +95,7 @@ class DiamondGAN():
         except:
             print('Automatically download pre-trained model failed')
             print('Please download model under the link https://drive.google.com/file/d/1BkBc-_yTabEOf1_HJxNjccV9kdg5Dgu5/view manually')
+            exit()
     
     def load_model_and_generate_synthetic_images(self, input_dir, output_dir):
 
